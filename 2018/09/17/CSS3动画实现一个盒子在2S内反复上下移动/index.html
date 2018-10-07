@@ -196,63 +196,63 @@
 					
 						<p>前段时间遇到个笔试题，大概就是要求用CSS实现一个盒子在2S内匀速反复上下移动，兼容主流浏览器。</p>
 <p>使用CSS3中的@keyframes规则和animation属性可以实现动画效果,代码如下:</p>
-<pre><code class="html">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;style&gt; 
-div
-{
-    width:100px;
-    height:100px;
-    background:red;
-    position:relative;
-    animation:mymove 2s infinite alternate linear;/*作用于mymove,2s完成一次动画,动画次数无限次,一次动画播放完后反向播放,动画速度匀速*/
-    -moz-animation:mymove 2s infinite alternate linear; /* Firefox */
-    -webkit-animation:mymove 2s infinite alternate linear; /* Safari and Chrome */
-    -o-animation:mymove 2s infinite alternate linear; /* Opera */
-}
+<pre class="line-numbers language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style language-css"> 
+<span class="token selector">div
+</span><span class="token punctuation">{</span>
+    <span class="token property">width</span><span class="token punctuation">:</span><span class="token number">100</span>px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span><span class="token number">100</span>px<span class="token punctuation">;</span>
+    <span class="token property">background</span><span class="token punctuation">:</span>red<span class="token punctuation">;</span>
+    <span class="token property">position</span><span class="token punctuation">:</span>relative<span class="token punctuation">;</span>
+    <span class="token property">animation</span><span class="token punctuation">:</span>mymove <span class="token number">2</span>s infinite alternate linear<span class="token punctuation">;</span><span class="token comment" spellcheck="true">/*作用于mymove,2s完成一次动画,动画次数无限次,一次动画播放完后反向播放,动画速度匀速*/</span>
+    <span class="token property">-moz-animation</span><span class="token punctuation">:</span>mymove <span class="token number">2</span>s infinite alternate linear<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* Firefox */</span>
+    <span class="token property">-webkit-animation</span><span class="token punctuation">:</span>mymove <span class="token number">2</span>s infinite alternate linear<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* Safari and Chrome */</span>
+    <span class="token property">-o-animation</span><span class="token punctuation">:</span>mymove <span class="token number">2</span>s infinite alternate linear<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">/* Opera */</span>
+<span class="token punctuation">}</span>
 
-@keyframes mymove
-{
-    0%   {top:0px;}
-    100% {top:200px;}
-}
+<span class="token atrule"><span class="token rule">@keyframes</span> mymove</span>
+<span class="token punctuation">{</span>
+    <span class="token selector">0%   </span><span class="token punctuation">{</span><span class="token property">top</span><span class="token punctuation">:</span><span class="token number">0</span>px<span class="token punctuation">;</span><span class="token punctuation">}</span>
+    <span class="token selector">100% </span><span class="token punctuation">{</span><span class="token property">top</span><span class="token punctuation">:</span><span class="token number">200</span>px<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-@-moz-keyframes mymove /* Firefox */
-{
-    0%   {top:0px;}
-    100% {top:200px;}
-}
+@-moz-keyframes mymove <span class="token comment" spellcheck="true">/* Firefox */</span>
+<span class="token punctuation">{</span>
+    <span class="token selector">0%   </span><span class="token punctuation">{</span><span class="token property">top</span><span class="token punctuation">:</span><span class="token number">0</span>px<span class="token punctuation">;</span><span class="token punctuation">}</span>
+    <span class="token selector">100% </span><span class="token punctuation">{</span><span class="token property">top</span><span class="token punctuation">:</span><span class="token number">200</span>px<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-@-webkit-keyframes mymove /* Safari and Chrome */
-{
-    0%   {top:0px;}
-    100% {top:200px;}
-}
+@-webkit-keyframes mymove <span class="token comment" spellcheck="true">/* Safari and Chrome */</span>
+<span class="token punctuation">{</span>
+    <span class="token selector">0%   </span><span class="token punctuation">{</span><span class="token property">top</span><span class="token punctuation">:</span><span class="token number">0</span>px<span class="token punctuation">;</span><span class="token punctuation">}</span>
+    <span class="token selector">100% </span><span class="token punctuation">{</span><span class="token property">top</span><span class="token punctuation">:</span><span class="token number">200</span>px<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-@-o-keyframes mymove /* Opera */
-{
-    0%   {top:0px;}
-    100% {top:200px;}
-}
-&lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
+@-o-keyframes mymove <span class="token comment" spellcheck="true">/* Opera */</span>
+<span class="token punctuation">{</span>
+    <span class="token selector">0%   </span><span class="token punctuation">{</span><span class="token property">top</span><span class="token punctuation">:</span><span class="token number">0</span>px<span class="token punctuation">;</span><span class="token punctuation">}</span>
+    <span class="token selector">100% </span><span class="token punctuation">{</span><span class="token property">top</span><span class="token punctuation">:</span><span class="token number">200</span>px<span class="token punctuation">;</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
 
-&lt;p&gt;&lt;b&gt;注释：&lt;/b&gt;本例在 Internet Explorer 中无效。&lt;/p&gt;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span><span class="token punctuation">></span></span>注释：<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">></span></span>本例在 Internet Explorer 中无效。<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
 
-&lt;div&gt;&lt;/div&gt;
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
 
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>此处不知为何，firefox浏览器(windows 60.0 64位)中居然更改-moz-animation属性无效，更改-webkit-animation属性才有效，简直匪夷所思……</p>
 <p>这里 animation:mymove 2s infinite alternate;也可以写成：</p>
-<pre><code class="html">animation-name:mymove;  /*规定 @keyframes 动画的名称*/
+<pre class="line-numbers language-html"><code class="language-html">animation-name:mymove;  /*规定 @keyframes 动画的名称*/
 animation-duration:2s;  /*规定动画完成一个周期所花费的秒或毫秒。默认是 0*/
-animation-direction:alternate;  /*     规定动画是否在下一周期逆向地播放。默认是 &quot;normal&quot;*/
+animation-direction:alternate;  /*     规定动画是否在下一周期逆向地播放。默认是 "normal"*/
 animation-timing-function:linear /*规定动画的速度曲线。默认为ease,linear为匀速*/
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>@keyframes规则具体用法与更多动画属性请参考：</p>
 <p><a href="http://www.w3school.com.cn/css3/css3_animation.asp" target="_blank" rel="noopener">http://www.w3school.com.cn/css3/css3_animation.asp</a></p>
 

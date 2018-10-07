@@ -202,33 +202,33 @@
 输出: 6
 </code></pre><p>小米笔试遇到的一个题，蛮有意思的。</p>
 <p>思路：创建一个二维数组，记录每层的黑白情况（0代表白，1代表黑），这样每层的处理就都一样了。每一层从左到右搜索到第一个黑块记录其下标为left，再从右到左搜索第一个黑块记录其下标为right，然后从left到right数白块数量。</p>
-<pre><code class="javascript">var trap = function(input) {
-    var max = Math.max.apply(this,input);
-    var ns = new Array();
-    for(var i=0;i&lt;max;i++){
-        ns[i] = new Array();
-        for(var j=0;j&lt;input.length;j++){
-            if(input[j]&gt;=1){
-                input[j]--;
-                ns[i][j] = 1;
-            }
-            else
-                ns[i][j] = 0;
-        }
-    }
-    var count = 0;
-    for(var i=0;i&lt;max;i++){
-        var left = ns[i].indexOf(1);
-        var right = ns[i].lastIndexOf(1);
-        for(var j=left;j&lt;right;j++){
-            if(ns[i][j]==0){
-                count++;
-            }
-        }
-    }
-    return count;
-};
-</code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> trap <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>input<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> max <span class="token operator">=</span> Math<span class="token punctuation">.</span>max<span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span>input<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> ns <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>max<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        ns<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">&lt;</span>input<span class="token punctuation">.</span>length<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>input<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">>=</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                input<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">--</span><span class="token punctuation">;</span>
+                ns<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span>
+                ns<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">var</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>max<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">var</span> left <span class="token operator">=</span> ns<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">var</span> right <span class="token operator">=</span> ns<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">lastIndexOf</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> j<span class="token operator">=</span>left<span class="token punctuation">;</span>j<span class="token operator">&lt;</span>right<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>ns<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                count<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 					
 				</div>
