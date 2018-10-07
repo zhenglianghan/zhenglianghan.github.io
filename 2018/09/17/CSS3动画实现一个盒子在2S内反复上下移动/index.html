@@ -425,7 +425,12 @@ animation-timing-function:linear /*规定动画的速度曲线。默认为ease,l
 	</div>
 
 	
-		<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="//music.163.com/outchain/player?type=0&id=2435460185&auto=1&height=32"></iframe>
+		<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="" name="mainFrame"></iframe>
+		<script>
+			window.onload = function(){
+				mainFrame.src = "//music.163.com/outchain/player?type=0&id=2435460185&auto=1&height=32";
+			}
+		</script>
 	
 </footer>
 		<!-- <script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script> -->
