@@ -10,7 +10,7 @@
 		
 
 <head>
-	<title>文章归档: 2018/10</title>
+	<title>onunload事件与onbeforeunload事件详解</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI" />
@@ -144,65 +144,246 @@
 		<!-- content srart -->
 <div class="am-g am-g-fixed blog-fixed blog-content">
 	<div class="am-u-md-8 am-u-sm-12">
-		<div class="archive">
 
-			<div class="blog-text-center">
-				
-					<i class="fa fa-book">总计8篇文章</i>
-				
-			</div>  
+		<article class="am-article blog-article-p">
 
-			
+			<div class="am-article-hd">
+				
 
-							
-				
-				
-				
+
+				<h1 class="am-article-title blog-text-center">
 					
+					
+	
+		<a href="/2018/10/08/onunload事件与onbeforeunload事件详解/" itemprop="url">		
+			onunload事件与onbeforeunload事件详解		
+		</a>
+	
+
+				</h1>
+
+				<p class="am-article-meta blog-text-center">
+					<span>
+						<i class="fa fa-clock-o"></i> 
+						<a href="/2018/10/08/onunload事件与onbeforeunload事件详解/" itemprop="url">
+	<time datetime="2018-10-08T13:21:53.000Z" itemprop="datePublished">
+  		2018-10-08
+  </time>
+</a>    
+&nbsp;
+					</span>
+					
+					<span>						
+						
+							<i class="fa fa-tags"></i>
+							
+								<a href="#JavaScript" title="JavaScript" rel="3">JavaScript</a>&nbsp;
+													 											
+						
+					</span>
+				</p>
+			</div>
+
+			<div class="am-article-bd">
+				<div class="content" id="post-content">
+					
+						<p>实际上是unload事件与beforeunload事件，而onunload与onbeforeunload是事件处理程序，不过现在大家混着叫叫习惯了也无所谓了。</p>
+<p>我们实际开发时经常会遇到这样些场景：</p>
+<ol>
+<li>用户离开页面后系统将会永久发生某些改变（如在线考试系统，关闭页面后试卷自动提交），因此需要给在用户离开页面前给出相应的提示。</li>
+<li>统计用户在页面的停留时间，当用户离开页面前将数据传给后台。</li>
+</ol>
+<p>这时我们就需要用到JS中两个在页面关闭前触发的window对象的事件：unload与beforeunload。它们的表现大不相同。</p>
+<p><strong>unload</strong>事件在文档被完全卸载后触发。一定要小心编写此事件处理程序中的代码，既然unload事件是在一切被卸载后才触发，那么在<strong>页面加载后存在的那些对象，就不一定存在了</strong>。例如在页面中添加如下JS代码：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript">window<span class="token punctuation">.</span>onunload <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"ss"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>在Firefox与Chrome中，不会出现弹框，因为可能此时window对象已经不存在，而alert是window对象的属性，也跟着被摧毁。在比较老的IE版本中（IE8-）会出现弹框。</p>
+<p>所以，<strong>在unload事件中处理业务，基本上是成功不了的。</strong></p>
+<p><strong>beforeunload</strong>事件是为了让开发人员在页面卸载前阻止这一操作（当然也可以不阻止而只进行业务处理）。这个事件会在浏览器卸载页面之前触发，可以通过它来取消卸载并继续使用原有页面。但是不能彻底取消这个事件，因为那就相当于让用户无法离开当前页面了（耍流氓）。使用示例：</p>
+<pre class="line-numbers language-javascript"><code class="language-javascript">window<span class="token punctuation">.</span>onbeforeunload <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  e <span class="token operator">=</span> e <span class="token operator">||</span> window<span class="token punctuation">.</span>event<span class="token punctuation">;</span>
+
+  <span class="token comment" spellcheck="true">// 兼容IE8和Firefox 4之前的版本</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    e<span class="token punctuation">.</span>returnValue <span class="token operator">=</span> <span class="token string">'关闭提示'</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment" spellcheck="true">// Chrome, Safari, Firefox 4+, Opera 12+ , IE 9+</span>
+  <span class="token keyword">return</span> <span class="token string">'关闭提示'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>当该事件返回的字符串（或者事前设置好的event.returnValue的值）不为null或者undefined时，弹出确认窗口让用户自行选择是否关闭当前页面。一些浏览器(一些老版本的浏览器)将该事件返回的字符串显示在弹出窗上:</p>
+<p><img src="/2018/10/08/onunload事件与onbeforeunload事件详解/1.png" alt=""></p>
+<p>而从Firefox 4、 Chrome 51、Opera 38 和Safari 9.1开始，通用确认信息代替事件返回的字符串。请查阅<a href="https://bugzilla.mozilla.org/show_bug.cgi?id=588292" target="_blank" rel="noopener">bug 588292</a>和<a href="https://www.chromestatus.com/feature/5349061406228480" target="_blank" rel="noopener">Chrome Platform Status</a>。。例如Firefox:</p>
+<p><img src="/2018/10/08/onunload事件与onbeforeunload事件详解/2.png" alt=""></p>
+<p>Chrome:</p>
+<p><img src="/2018/10/08/onunload事件与onbeforeunload事件详解/3.png" alt=""></p>
+<p>此事件的兼容性也极好：</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Chrome</th>
+<th>Firefox (Gecko)</th>
+<th>Internet Explorer</th>
+<th>Opera</th>
+<th>Safari (WebKit)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Basic support</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>12</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>这样，我们就能使用这个事件处理函数来较好的处理我们的业务需求了。</p>
+<p>之所以说是较好，因为此处有天坑：<strong>只有在页面获得过一次焦点后，离开页面（点刷新，关闭页面，关闭浏览器）时才会触发beforeunload事件</strong>。也就是说页面弹出后咱啥也不干，直接点关闭，是不能触发beforeunload事件的。。。</p>
+<p><img src="/2018/10/08/onunload事件与onbeforeunload事件详解/5.jpg" alt=""></p>
+<p>另外从2011年5月25日起,  <a href="http://www.w3.org/TR/html5-diff/#changes-2011-05-25" target="_blank" rel="noopener">HTML5 规范</a> 声明:在该事件的处理函数中调用下列弹窗相关的方法时,可以忽略不执行,<code>window.showModalDialog()</code>, <code>window.alert()</code>, <code>window.confirm()</code> <code>window.prompt()</code>.所以在onbeforeunload事件处理程序中用alert弹框测试事件是否触发就很尴尬了（网上好多人问为啥不弹框呀，事件是不是没触发呀，当然我也问过），事件是触发了，但是alert弹框被屏蔽了。</p>
+<p>关于此事件与DOM中更多事件请参考<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/onbeforeunload" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/Window/onbeforeunload</a></p>
+<p>需翻墙，我也搞不懂为什么技术文档也会被墙</p>
 
 					
-					<!--<a href="/archives/2018" class="archive-year">2018</a>-->
-				
-								
-				
-					  
-					<div class="archive-year">
-						<a href="/archives/2018/10">
-							2018-10
-						</a>
-					</div>				
-				  
-				
-				<div class="archive-item">
-					<div class="archive-post-title">									
-						<a href="/2018/10/08/onunload事件与onbeforeunload事件详解/" itemprop="url">onunload事件与onbeforeunload事件详解</a>
-					</div>
-					<div class="archive-post-time">
-						<a href="/2018/10/08/onunload事件与onbeforeunload事件详解/" itemprop="url">10-08</a>
-					</div>
-				</div>		        							
-							
-				
-				
-				
-								
-				  
-				
-				<div class="archive-item">
-					<div class="archive-post-title">									
-						<a href="/2018/10/06/DOM中获取元素的实际大小/" itemprop="url">DOM中获取元素的实际大小</a>
-					</div>
-					<div class="archive-post-time">
-						<a href="/2018/10/06/DOM中获取元素的实际大小/" itemprop="url">10-06</a>
-					</div>
-				</div>		        							
-			
-				
-			    
-		</div>
-	</div>
+				</div>
+			</div>
+		</article>
+
+		<ul class="am-pagination">
+    
+	
+		<li class="am-pagination-next">
+		<a class="pull-right" href="/2018/10/06/DOM中获取元素的实际大小/" title="DOM中获取元素的实际大小">
+			下一篇 &raquo;
+		</a>
+		</li>
+	 
+ </ul>
+        
+
+		<div class="theme-annie-comment-button-container">
+	<button id="annie-comment-button" class="theme-annie-comment-button" onclick="Annie_Comment()">
+		加载评论
+		<!--加载评论-->
+	</button>
 </div>
 
+<div id="annie-comment-container" class="theme-annie-comment-main-container">
+
+	
+		
+			<!-- comment gitalk -->
+			<!-- show gitalk comment -->
+
+  <div id="gitalk-container"></div>
+
+
+<!-- gitalk`s css & js -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<link rel="stylesheet" href="/css/comment.css">
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script type="text/javascript">
+	//thanks O-R
+	//https://github.com/gitalk/gitalk/issues/102#issuecomment-382970552
+	//去除尾部匹配正则数组的字符串  
+	//remove redundant characters
+	String.prototype.trimEnd = function(regStr) {
+		var result = this;
+		if(regStr == undefined || regStr == null || regStr == "") {
+			return result;
+		}
+		var array = regStr.split(',');
+
+		if(array.length > 0) {
+
+			var c = array.shift();
+			var str = this;
+			var i = str.length;
+			var rg = new RegExp(c);
+			var matchArr = str.match(rg);
+
+			if(matchArr != undefined && matchArr != null && matchArr.length > 0) {
+				var matchStr = matchArr[0].replace(/\\/g, "\\\\").replace(/\*/g, "\\*")
+					.replace(/\+/g, "\\+").replace(/\|/g, "\\|")
+					.replace(/\{/g, "\\{").replace(/\}/g, "\\}")
+					.replace(/\(/g, "\\(").replace(/\)/g, "\\)")
+					.replace(/\^/g, "\\^").replace(/\$/g, "\\$")
+					.replace(/\[/g, "\\[").replace(/\]/g, "\\]")
+					.replace(/\?/g, "\\?").replace(/\,/g, "\\,")
+					.replace(/\./g, "\\.").replace(/\&/g, "\\&");
+				matchStr = matchStr + '$';
+				result = str.replace(new RegExp(matchStr), "");
+			}
+
+			if(array.length > 0) {
+				return result.trimEnd(array.join())
+			} else {
+				return result;
+			}
+		}
+	};
+
+	//create gitalk
+	var gitalk = new Gitalk({
+		clientID: 'c954d1ae74b07aa83bb4',
+		clientSecret: '2dd84731561867c63becd3825459c20173a9a0e9',
+		//id: window.location.pathname,
+		// id: (window.location.pathname).split("/").pop().substring(0, 49),
+		id: md5(location.href.trimEnd('#.*$,\\?.*$,index.html$')),
+		repo: 'zhenglianghan.github.io',
+		owner: 'zhenglianghan',
+		admin: 'zhenglianghan',
+		distractionFreeMode: 'true',
+	})
+	gitalk.render('gitalk-container');
+</script>
+		
+	
+
+</div>
+
+<script type="text/javascript">
+	/* Show Comment */
+	var Annie_Comment = function() {
+		function Show_Hidden(obj) {
+			obj.style.display = 'block';
+		}
+		
+		//var obutton = $('#annie-comment-button');
+		//var obutton = $('#annie-comment-container');
+		var obutton = document.getElementById("annie-comment-button" || "0");
+		var odiv = document.getElementById("annie-comment-container");
+		if( 'obutton' ) {
+			obutton.onclick = function() {
+				Show_Hidden(odiv);
+				$("#annie-comment-button").css("display", 'none');
+				return false;
+			}
+		}
+	};
+
+	(function Annie_Init() {
+		Annie_Comment();
+	})();
+</script>
+		
+		<!--
+	时间：2018-09-24
+	描述：The TOC module refers to 'https://github.com/codefine/hexo-theme-mellow', include toc.ejs、toc.js、toc.css. All rights reserved by codefine. 
+-->
+
+	
+
+	</div>
+</div>
 		</div>
 		</main>
 		
@@ -277,6 +458,11 @@
 	}
 </style>
 
+
+	<script src="/js/motto.js"></script>
+	<script type="text/javascript">
+		$(".motto").html(getMingYanContent());
+	</script>	
 
 
 
@@ -618,6 +804,8 @@
 
 
 
+
+	<script type="text/javascript" src="/js/toc.js"></script>
 
 
 <script type="text/javascript" src="/js/main.js"></script>
