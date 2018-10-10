@@ -54,7 +54,7 @@
 	
 	<!-- others: such as change-bg, time... -->
 	<p class="page-name-other">
-		10/8/2018 
+		10/10/2018 
 		<style type="text/css">
 	header:after {
 		content: '';
@@ -767,12 +767,24 @@
 
 <script type="text/javascript">
 	//generate a random img that pre_name 'from 0 to 110'
-	var random_bg = Math.floor(Math.random() * 109 + 1);
+	var random_bg = Math.floor(Math.random() * 106 + 0);
 
 	//var bg = 'url(/img/random/' + random_bg + '.jpg)';		
 	var bg = 'url(https://zhenglianghan.github.io/Random-img/' + random_bg + '.jpg)';
-
 	$("#header-bg-2").css("background-image", bg);
+
+	//set copyright when user copy
+	$(function(){
+		document.oncopy = function(e){
+			e = e || window.event;
+			var oldText = document.getSelection().toString();
+			var copyURL = "http:www.baidu.com";
+			var author = 蛤蛤蛤;
+			var newText = oldText + "\n" + "Copy from:" + copyURL + "\n" + "Original author:" + author;
+			e.clipboardData.setData('text/plain', newText);
+			e.preventDefault();
+		};
+	});
 </script>
 		
 		<!--back to top-->
