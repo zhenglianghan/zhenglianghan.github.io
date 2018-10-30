@@ -10,7 +10,7 @@
 		
 
 <head>
-	<title>JS中Number,parseInt,parseFloat函数规则</title>
+	<title>阿里云服务centos系统下部署tomcat项目教程</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI" />
@@ -155,8 +155,8 @@
 					
 					
 	
-		<a href="/2018/09/18/JS中Number-parseInt-parseFloat函数规则/" itemprop="url">		
-			JS中Number,parseInt,parseFloat函数规则		
+		<a href="/2018/10/30/阿里云服务centos系统下部署tomcat项目教程/" itemprop="url">		
+			阿里云服务centos系统下部署tomcat项目教程		
 		</a>
 	
 
@@ -165,9 +165,9 @@
 				<p class="am-article-meta blog-text-center">
 					<span>
 						<i class="fa fa-clock-o"></i> 
-						<a href="/2018/09/18/JS中Number-parseInt-parseFloat函数规则/" itemprop="url">
-	<time datetime="2018-09-18T05:56:24.000Z" itemprop="datePublished">
-  		2018-09-18
+						<a href="/2018/10/30/阿里云服务centos系统下部署tomcat项目教程/" itemprop="url">
+	<time datetime="2018-10-30T12:37:41.000Z" itemprop="datePublished">
+  		2018-10-30
   </time>
 </a>    
 &nbsp;
@@ -177,7 +177,7 @@
 						
 							<i class="fa fa-tags"></i>
 							
-								<a href="#JavaScript" title="JavaScript" rel="3">JavaScript</a>&nbsp;
+								<a href="#服务器" title="服务器" rel="1">服务器</a>&nbsp;
 													 											
 						
 					</span>
@@ -187,34 +187,74 @@
 			<div class="am-article-bd">
 				<div class="content" id="post-content">
 					
-						<p>JS中经常会进行各种隐式类型转换，牢记类型转换函数才能理解这门“世界上最容易被误解的语言”。</p>
-<p>有三个函数可以把非数值转换为数值：Number(), parseInt(), 和parseFloat()。第一个函数可以作用于任何类型。而后两个专门用于转换字符串。</p>
-<p><strong>Number()</strong>函数的转换规则如下：</p>
-<ul>
-<li>如果是Boolean值，true和false分别被转换为1和0。</li>
-<li>如果是数字值，只是简单的传入和返回。</li>
-<li><strong>如果是null值，返回0。</strong></li>
-<li><strong>如果是undefined，返回NaN。</strong></li>
-<li>如果是字符串遵循下列规则：<ul>
-<li>只包含数字（包括前面带正好或负号的情况），则将其转换为十进制数值，<strong>并忽略前导0</strong></li>
-<li>包含有效的十六进制格式时，则将其转换为相同大小的十进制整数值。</li>
-<li><strong>空字符串转换为0</strong>。</li>
-<li>除上述格式之外的字符串都转换为NaN。</li>
-</ul>
-</li>
-<li>如果是对象，则调用对象的valueOf()方法，然后依照前面的规则转换返回的值，如果转换的结果是NaN，则调用对象的toString()方法，再按照前面的方法转换这个返回的字符串。例如Number([].valueOf())结果为NaN，则调用其toString()方法，返回的是空字符串””，转换为Number类型为0,所以<strong>Number([])===0</strong>; <strong>Number({})结果为NaN</strong>。</li>
-</ul>
-<p>可以看到Number()函数有很多不合理的地方(尽管不合理，隐式转换时却用的是它，手动滑稽)，因此在处理整数时更常用的是parseInt()函数</p>
-<p><strong>parseInt()</strong>函数规则总结如下:</p>
-<ul>
-<li><strong>非数字值和字符串全部返回NaN,包括null</strong></li>
-<li><strong>空字符串返回NaN</strong></li>
-<li>“123blue”返回123,”ss12ss”返回NaN,”12.5”返回12，因为小数点不被认为是有效字符</li>
-<li>单个参数时可以转换十六进制，ES5以后不能转换8进制，前导零始终被忽略。</li>
-<li>可以添加第二个参数作为转换的基数。</li>
-</ul>
-<p><strong>parseFloat()</strong>函数与parseInt()函数规则类似，只是将第二个小数点才当做无效字符，并且<strong>只解析十进制值</strong>。</p>
-<p>最后再次强调，<strong>隐式类型转换时，其他类型转换为数字类型时使用的是Number()函数</strong>。</p>
+						<h3 id="1-购买服务器"><a href="#1-购买服务器" class="headerlink" title="1 购买服务器"></a>1 购买服务器</h3><p><a href="https://www.aliyun.com/product/ecs?spm=5176.8142029.selected.1.e9396d3eHuaYMw" target="_blank" rel="noopener">https://www.aliyun.com/product/ecs?spm=5176.8142029.selected.1.e9396d3eHuaYMw</a></p>
+<p>学生优惠服务器：</p>
+<p><a href="https://promotion.aliyun.com/ntms/act/campus2018.html" target="_blank" rel="noopener">https://promotion.aliyun.com/ntms/act/campus2018.html</a></p>
+<p>选操作系统时选centos</p>
+<h3 id="2开放端口"><a href="#2开放端口" class="headerlink" title="2开放端口"></a>2开放端口</h3><p>阿里云服务器默认只打开了22端口用作远程连接，<strong>必须要在控制台里设置才能打开其它端口</strong>（服务器中设置无用）：</p>
+<p><a href="https://jingyan.baidu.com/article/03b2f78c31bdea5ea237ae88.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/03b2f78c31bdea5ea237ae88.html</a></p>
+<p>这里我们需打开<strong>8080</strong>端口（tomcat使用）；<strong>3306</strong>端口(mysql使用)；20,21端口（scp使用，拿来传文件的）</p>
+<h3 id="3连接到服务器"><a href="#3连接到服务器" class="headerlink" title="3连接到服务器"></a>3连接到服务器</h3><p>虽然可以在阿里云的控制台远程连接到服务器，但是在那里的复制粘贴操作很麻烦，而且不能输入和显示中文，所以建议安装SSH后在本地连接到服务器。</p>
+<p><strong>注意，这里是本地安装ssh，用来连接到远程服务器，而不是在服务器上安装ssh</strong></p>
+<p>windows:<a href="http://www.freesshd.com/index.php?ctt=download" target="_blank" rel="noopener">http://www.freesshd.com/index.php?ctt=download</a></p>
+<p>ubuntu:<a href="https://jingyan.baidu.com/article/9c69d48fb9fd7b13c8024e6b.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/9c69d48fb9fd7b13c8024e6b.html</a></p>
+<p>之后在命令行输入:</p>
+<pre><code>ssh root@120.79.44.***
+</code></pre><p>这里后面的IP为服务器的公网IP，可以在控制台查看到。</p>
+<p>完了之后输入密码root账号的密码，就连接到了远程服务器了。</p>
+<h3 id="4安装java"><a href="#4安装java" class="headerlink" title="4安装java"></a>4安装java</h3><pre class="line-numbers language-shell"><code class="language-shell">sudo yum install java-1.8.0-openjdk
+sudo yum install java-1.8.0-openjdk-devel
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="5安装启动tomcat"><a href="#5安装启动tomcat" class="headerlink" title="5安装启动tomcat"></a>5安装启动tomcat</h3><p>下载tomcat</p>
+<pre class="line-numbers language-shell"><code class="language-shell">wget http://mirror.bit.edu.cn/apache/tomcat/tomcat-8/v8.5.28/bin/apache-tomcat-8.5.28.tar.gz
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>要安装其它版本看这个教程：</p>
+<p><a href="https://blog.csdn.net/qq_29291085/article/details/77389361" target="_blank" rel="noopener">https://blog.csdn.net/qq_29291085/article/details/77389361</a></p>
+<p>下载完成后解压：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">tar -zxvf apache-tomcat-8.5.28.tar.gz
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>注意这里的文件名，不同版本号下下来的文件名可不同</p>
+<p>切换到tomcat的bin目录下：</p>
+<pre><code>cd /root/apache-tomcat-8.5.28/bin
+</code></pre><p>之后输入ls，可以看到有一个startup.sh文件，运行它来启动tomcat:</p>
+<pre class="line-numbers language-shell"><code class="language-shell">./startup.sh
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>之后访问主机地址:8080 即可访问到tomcat页面了。</p>
+<h3 id="6安装启动数据库"><a href="#6安装启动数据库" class="headerlink" title="6安装启动数据库"></a>6安装启动数据库</h3><p>这里安装mariadb，是mysql的一个子版本</p>
+<pre class="line-numbers language-shell"><code class="language-shell">sudo yum install mariadb-server
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>启动数据库服务</p>
+<pre class="line-numbers language-shell"><code class="language-shell">service mariadb start
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>开机自启动</p>
+<pre class="line-numbers language-shell"><code class="language-shell">systemctl enable mariadb
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>设置mysql用户密码</p>
+<pre class="line-numbers language-shell"><code class="language-shell">mysqladmin -u root password 'mypassword'
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="7传输war包与sql文件到服务器"><a href="#7传输war包与sql文件到服务器" class="headerlink" title="7传输war包与sql文件到服务器"></a>7传输war包与sql文件到服务器</h3><p>eclispe导出war包：</p>
+<p><a href="https://jingyan.baidu.com/article/624e74597ccebe34e9ba5a58.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/624e74597ccebe34e9ba5a58.html</a></p>
+<p>idea导出war包：</p>
+<p><a href="https://jingyan.baidu.com/article/a24b33cd10adf719fe002ba1.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/a24b33cd10adf719fe002ba1.html</a></p>
+<p>导出sql文件：</p>
+<p><a href="https://blog.csdn.net/kwame211/article/details/75635463" target="_blank" rel="noopener">https://blog.csdn.net/kwame211/article/details/75635463</a></p>
+<p>之后将这两个文件使用scp命令，或者下载winscp（windows向linux传输文件神器），传输到远程服务器上。</p>
+<p>先在远程服务器上运行一下sql文件(假设文件名为test.sql,放在了root目录下):</p>
+<pre class="line-numbers language-shell"><code class="language-shell">mysql -u root -p
+mysql-> create database test;
+mysql-> use test;
+mysql-> source /root/test.sql;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>结束后查一下表什么的看有没有出什么错。如果有中文乱码问题，百度一哈，或者去安装mysql而不用mariadb，一般来说是没啥问题的。</p>
+<p>将war包，假设文件名为test.war，放到tomcat下的webapp目录下。</p>
+<p>之后切换到tomcat目录的bin目录下</p>
+<pre class="line-numbers language-shell"><code class="language-shell">cd /root/apache-tomcat-8.5.28/bin
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>重启tomcat：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">./shutdown.sh
+./startup.sh  
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h3 id="8访问网站"><a href="#8访问网站" class="headerlink" title="8访问网站"></a>8访问网站</h3><p>访问公网IP:8080/war包名，就能看到部署上去的网站了，通常从开发环境到生产环境会出些小问题，耐心解决一下即可。</p>
 
 					
 				</div>
@@ -223,15 +263,9 @@
 
 		<ul class="am-pagination">
     
-    	<li class="am-pagination-prev">
-   		<a class="pull-left" href="/2018/09/21/leetCode-42-雨水题/" title="leetCode 42 雨水题">
-      		&laquo; 上一篇
-		</a>
-		</li>
-	
 	
 		<li class="am-pagination-next">
-		<a class="pull-right" href="/2018/09/17/CSS3动画实现一个盒子在2S内反复上下移动/" title="CSS3动画实现一个盒子在2S内反复上下移动">
+		<a class="pull-right" href="/2018/10/08/onunload事件与onbeforeunload事件详解/" title="onunload事件与onbeforeunload事件详解">
 			下一篇 &raquo;
 		</a>
 		</li>
@@ -352,6 +386,18 @@
 	描述：The TOC module refers to 'https://github.com/codefine/hexo-theme-mellow', include toc.ejs、toc.js、toc.css. All rights reserved by codefine. 
 -->
 
+	
+		<aside class="post-widget">
+			<nav class="post-toc-wrap" id="post-toc">
+				
+					<strong>文章目录</strong>
+				
+				
+				<!--toc(post.content)-->
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-购买服务器"><span class="post-toc-text">1 购买服务器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2开放端口"><span class="post-toc-text">2开放端口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3连接到服务器"><span class="post-toc-text">3连接到服务器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4安装java"><span class="post-toc-text">4安装java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5安装启动tomcat"><span class="post-toc-text">5安装启动tomcat</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6安装启动数据库"><span class="post-toc-text">6安装启动数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7传输war包与sql文件到服务器"><span class="post-toc-text">7传输war包与sql文件到服务器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8访问网站"><span class="post-toc-text">8访问网站</span></a></li></ol>
+			</nav>
+			<div class="post-toc-bar"><div>
+		</aside>
 	
 
 	</div>

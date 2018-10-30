@@ -10,7 +10,7 @@
 		
 
 <head>
-	<title>JS中Number,parseInt,parseFloat函数规则</title>
+	<title>category: 运维</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI" />
@@ -144,218 +144,50 @@
 		<!-- content srart -->
 <div class="am-g am-g-fixed blog-fixed blog-content">
 	<div class="am-u-md-8 am-u-sm-12">
+		<div class="archive">
 
-		<article class="am-article blog-article-p">
-
-			<div class="am-article-hd">
+			<div class="blog-text-center">
 				
+					<i class="fa fa-book">运维</i>
+				
+			</div>  
 
+			
 
-				<h1 class="am-article-title blog-text-center">
-					
-					
-	
-		<a href="/2018/09/18/JS中Number-parseInt-parseFloat函数规则/" itemprop="url">		
-			JS中Number,parseInt,parseFloat函数规则		
-		</a>
-	
-
-				</h1>
-
-				<p class="am-article-meta blog-text-center">
-					<span>
-						<i class="fa fa-clock-o"></i> 
-						<a href="/2018/09/18/JS中Number-parseInt-parseFloat函数规则/" itemprop="url">
-	<time datetime="2018-09-18T05:56:24.000Z" itemprop="datePublished">
-  		2018-09-18
-  </time>
-</a>    
-&nbsp;
-					</span>
-					
-					<span>						
-						
-							<i class="fa fa-tags"></i>
 							
-								<a href="#JavaScript" title="JavaScript" rel="3">JavaScript</a>&nbsp;
-													 											
-						
-					</span>
-				</p>
-			</div>
-
-			<div class="am-article-bd">
-				<div class="content" id="post-content">
+				
+				
+				
 					
-						<p>JS中经常会进行各种隐式类型转换，牢记类型转换函数才能理解这门“世界上最容易被误解的语言”。</p>
-<p>有三个函数可以把非数值转换为数值：Number(), parseInt(), 和parseFloat()。第一个函数可以作用于任何类型。而后两个专门用于转换字符串。</p>
-<p><strong>Number()</strong>函数的转换规则如下：</p>
-<ul>
-<li>如果是Boolean值，true和false分别被转换为1和0。</li>
-<li>如果是数字值，只是简单的传入和返回。</li>
-<li><strong>如果是null值，返回0。</strong></li>
-<li><strong>如果是undefined，返回NaN。</strong></li>
-<li>如果是字符串遵循下列规则：<ul>
-<li>只包含数字（包括前面带正好或负号的情况），则将其转换为十进制数值，<strong>并忽略前导0</strong></li>
-<li>包含有效的十六进制格式时，则将其转换为相同大小的十进制整数值。</li>
-<li><strong>空字符串转换为0</strong>。</li>
-<li>除上述格式之外的字符串都转换为NaN。</li>
-</ul>
-</li>
-<li>如果是对象，则调用对象的valueOf()方法，然后依照前面的规则转换返回的值，如果转换的结果是NaN，则调用对象的toString()方法，再按照前面的方法转换这个返回的字符串。例如Number([].valueOf())结果为NaN，则调用其toString()方法，返回的是空字符串””，转换为Number类型为0,所以<strong>Number([])===0</strong>; <strong>Number({})结果为NaN</strong>。</li>
-</ul>
-<p>可以看到Number()函数有很多不合理的地方(尽管不合理，隐式转换时却用的是它，手动滑稽)，因此在处理整数时更常用的是parseInt()函数</p>
-<p><strong>parseInt()</strong>函数规则总结如下:</p>
-<ul>
-<li><strong>非数字值和字符串全部返回NaN,包括null</strong></li>
-<li><strong>空字符串返回NaN</strong></li>
-<li>“123blue”返回123,”ss12ss”返回NaN,”12.5”返回12，因为小数点不被认为是有效字符</li>
-<li>单个参数时可以转换十六进制，ES5以后不能转换8进制，前导零始终被忽略。</li>
-<li>可以添加第二个参数作为转换的基数。</li>
-</ul>
-<p><strong>parseFloat()</strong>函数与parseInt()函数规则类似，只是将第二个小数点才当做无效字符，并且<strong>只解析十进制值</strong>。</p>
-<p>最后再次强调，<strong>隐式类型转换时，其他类型转换为数字类型时使用的是Number()函数</strong>。</p>
 
 					
-				</div>
-			</div>
-		</article>
-
-		<ul class="am-pagination">
-    
-    	<li class="am-pagination-prev">
-   		<a class="pull-left" href="/2018/09/21/leetCode-42-雨水题/" title="leetCode 42 雨水题">
-      		&laquo; 上一篇
-		</a>
-		</li>
-	
-	
-		<li class="am-pagination-next">
-		<a class="pull-right" href="/2018/09/17/CSS3动画实现一个盒子在2S内反复上下移动/" title="CSS3动画实现一个盒子在2S内反复上下移动">
-			下一篇 &raquo;
-		</a>
-		</li>
-	 
- </ul>
-        
-
-		<div class="theme-annie-comment-button-container">
-	<button id="annie-comment-button" class="theme-annie-comment-button" onclick="Annie_Comment()">
-		加载评论
-		<!--加载评论-->
-	</button>
-</div>
-
-<div id="annie-comment-container" class="theme-annie-comment-main-container">
-
-	
-		
-			<!-- comment gitalk -->
-			<!-- show gitalk comment -->
-
-  <div id="gitalk-container"></div>
-
-
-<!-- gitalk`s css & js -->
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-<link rel="stylesheet" href="/css/comment.css">
-<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
-<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-
-<script type="text/javascript">
-	//thanks O-R
-	//https://github.com/gitalk/gitalk/issues/102#issuecomment-382970552
-	//去除尾部匹配正则数组的字符串  
-	//remove redundant characters
-	String.prototype.trimEnd = function(regStr) {
-		var result = this;
-		if(regStr == undefined || regStr == null || regStr == "") {
-			return result;
-		}
-		var array = regStr.split(',');
-
-		if(array.length > 0) {
-
-			var c = array.shift();
-			var str = this;
-			var i = str.length;
-			var rg = new RegExp(c);
-			var matchArr = str.match(rg);
-
-			if(matchArr != undefined && matchArr != null && matchArr.length > 0) {
-				var matchStr = matchArr[0].replace(/\\/g, "\\\\").replace(/\*/g, "\\*")
-					.replace(/\+/g, "\\+").replace(/\|/g, "\\|")
-					.replace(/\{/g, "\\{").replace(/\}/g, "\\}")
-					.replace(/\(/g, "\\(").replace(/\)/g, "\\)")
-					.replace(/\^/g, "\\^").replace(/\$/g, "\\$")
-					.replace(/\[/g, "\\[").replace(/\]/g, "\\]")
-					.replace(/\?/g, "\\?").replace(/\,/g, "\\,")
-					.replace(/\./g, "\\.").replace(/\&/g, "\\&");
-				matchStr = matchStr + '$';
-				result = str.replace(new RegExp(matchStr), "");
-			}
-
-			if(array.length > 0) {
-				return result.trimEnd(array.join())
-			} else {
-				return result;
-			}
-		}
-	};
-
-	//create gitalk
-	var gitalk = new Gitalk({
-		clientID: 'c954d1ae74b07aa83bb4',
-		clientSecret: '2dd84731561867c63becd3825459c20173a9a0e9',
-		//id: window.location.pathname,
-		// id: (window.location.pathname).split("/").pop().substring(0, 49),
-		id: md5(location.href.trimEnd('#.*$,\\?.*$,index.html$')),
-		repo: 'zhenglianghan.github.io',
-		owner: 'zhenglianghan',
-		admin: 'zhenglianghan',
-		distractionFreeMode: 'true',
-	})
-	gitalk.render('gitalk-container');
-</script>
-		
-	
-
-</div>
-
-<script type="text/javascript">
-	/* Show Comment */
-	var Annie_Comment = function() {
-		function Show_Hidden(obj) {
-			obj.style.display = 'block';
-		}
-		
-		//var obutton = $('#annie-comment-button');
-		//var obutton = $('#annie-comment-container');
-		var obutton = document.getElementById("annie-comment-button" || "0");
-		var odiv = document.getElementById("annie-comment-container");
-		if( 'obutton' ) {
-			obutton.onclick = function() {
-				Show_Hidden(odiv);
-				$("#annie-comment-button").css("display", 'none');
-				return false;
-			}
-		}
-	};
-
-	(function Annie_Init() {
-		Annie_Comment();
-	})();
-</script>
-		
-		<!--
-	时间：2018-09-24
-	描述：The TOC module refers to 'https://github.com/codefine/hexo-theme-mellow', include toc.ejs、toc.js、toc.css. All rights reserved by codefine. 
--->
-
-	
-
+					<!--<a href="/archives/2018" class="archive-year">2018</a>-->
+				
+								
+				
+					  
+					<div class="archive-year">
+						<a href="/archives/2018/10">
+							2018-10
+						</a>
+					</div>				
+				  
+				
+				<div class="archive-item">
+					<div class="archive-post-title">									
+						<a href="/2018/10/30/阿里云服务centos系统下部署tomcat项目教程/" itemprop="url">阿里云服务centos系统下部署tomcat项目教程</a>
+					</div>
+					<div class="archive-post-time">
+						<a href="/2018/10/30/阿里云服务centos系统下部署tomcat项目教程/" itemprop="url">10-30</a>
+					</div>
+				</div>		        							
+			
+				
+			    
+		</div>
 	</div>
 </div>
+
 		</div>
 		</main>
 		
@@ -430,11 +262,6 @@
 	}
 </style>
 
-
-	<script src="/js/motto.js"></script>
-	<script type="text/javascript">
-		$(".motto").html(getMingYanContent());
-	</script>	
 
 
 
@@ -776,8 +603,6 @@
 
 
 
-
-	<script type="text/javascript" src="/js/toc.js"></script>
 
 
 <script type="text/javascript" src="/js/main.js"></script>
