@@ -201,7 +201,7 @@
 <p>之后在命令行输入:</p>
 <pre><code>ssh root@120.79.44.***
 </code></pre><p>这里后面的IP为服务器的公网IP，可以在控制台查看到。</p>
-<p>完了之后输入密码root账号的密码，就连接到了远程服务器了。</p>
+<p>完了之后输入root账号的密码，就连接到了远程服务器了。</p>
 <h3 id="4安装java"><a href="#4安装java" class="headerlink" title="4安装java"></a>4安装java</h3><pre class="line-numbers language-shell"><code class="language-shell">sudo yum install java-1.8.0-openjdk
 sudo yum install java-1.8.0-openjdk-devel
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
@@ -219,7 +219,7 @@ sudo yum install java-1.8.0-openjdk-devel
 </code></pre><p>之后输入ls，可以看到有一个startup.sh文件，运行它来启动tomcat:</p>
 <pre class="line-numbers language-shell"><code class="language-shell">./startup.sh
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>之后访问主机地址:8080 即可访问到tomcat页面了。</p>
+<p>之后访问主机地址(公网IP):8080 即可访问到tomcat页面了。</p>
 <h3 id="6安装启动数据库"><a href="#6安装启动数据库" class="headerlink" title="6安装启动数据库"></a>6安装启动数据库</h3><p>这里安装mariadb，是mysql的一个子版本</p>
 <pre class="line-numbers language-shell"><code class="language-shell">sudo yum install mariadb-server
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -241,9 +241,9 @@ sudo yum install java-1.8.0-openjdk-devel
 <p>之后将这两个文件使用scp命令，或者下载winscp（windows向linux传输文件神器），传输到远程服务器上。</p>
 <p>先在远程服务器上运行一下sql文件(假设文件名为test.sql,放在了root目录下):</p>
 <pre class="line-numbers language-shell"><code class="language-shell">mysql -u root -p
-mysql-> create database test;
-mysql-> use test;
-mysql-> source /root/test.sql;
+create database test;
+use test;
+source /root/test.sql;
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>结束后查一下表什么的看有没有出什么错。如果有中文乱码问题，百度一哈，或者去安装mysql而不用mariadb，一般来说是没啥问题的。</p>
 <p>将war包，假设文件名为test.war，放到tomcat下的webapp目录下。</p>
