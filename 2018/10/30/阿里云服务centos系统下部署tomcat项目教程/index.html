@@ -255,6 +255,8 @@ mysql-> source /root/test.sql;
 ./startup.sh  
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="8访问网站"><a href="#8访问网站" class="headerlink" title="8访问网站"></a>8访问网站</h3><p>访问公网IP:8080/war包名，就能看到部署上去的网站了，通常从开发环境到生产环境会出些小问题，耐心解决一下即可。</p>
+<h3 id="9实时查看日志"><a href="#9实时查看日志" class="headerlink" title="9实时查看日志"></a>9实时查看日志</h3><p>切换到logs目录：cd tomcat/logs</p>
+<p>然后：tail -f catalina.out<br>这样运行时就可以实时查看运行日志了，看是否运行报错</p>
 
 					
 				</div>
@@ -394,7 +396,7 @@ mysql-> source /root/test.sql;
 				
 				
 				<!--toc(post.content)-->
-				<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-购买服务器"><span class="post-toc-text">1 购买服务器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2开放端口"><span class="post-toc-text">2开放端口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3连接到服务器"><span class="post-toc-text">3连接到服务器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4安装java"><span class="post-toc-text">4安装java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5安装启动tomcat"><span class="post-toc-text">5安装启动tomcat</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6安装启动数据库"><span class="post-toc-text">6安装启动数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7传输war包与sql文件到服务器"><span class="post-toc-text">7传输war包与sql文件到服务器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8访问网站"><span class="post-toc-text">8访问网站</span></a></li></ol>
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-购买服务器"><span class="post-toc-text">1 购买服务器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2开放端口"><span class="post-toc-text">2开放端口</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3连接到服务器"><span class="post-toc-text">3连接到服务器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4安装java"><span class="post-toc-text">4安装java</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5安装启动tomcat"><span class="post-toc-text">5安装启动tomcat</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6安装启动数据库"><span class="post-toc-text">6安装启动数据库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7传输war包与sql文件到服务器"><span class="post-toc-text">7传输war包与sql文件到服务器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8访问网站"><span class="post-toc-text">8访问网站</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9实时查看日志"><span class="post-toc-text">9实时查看日志</span></a></li></ol>
 			</nav>
 			<div class="post-toc-bar"><div>
 		</aside>
