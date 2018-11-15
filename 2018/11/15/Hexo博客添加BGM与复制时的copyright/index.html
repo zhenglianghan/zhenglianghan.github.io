@@ -199,7 +199,7 @@
     window.onload = function(){
         document.getElementById("mainFrame").src = "//music.163.com/outchain/player?type=0&id=2435460185&auto=1&height=32";
     }
-</script>
+</ script>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>这里没有直接将iframe嵌入页面是为了防止加载iframe导致页面载入速度变慢与白屏时BGM就响起来了，所以JS设置了在页面加载完成后开始加载iframe。</p>
 <p>如果你在做主题开发或者需要将主题分享给别人，你也可以细致一点，这样写：</p>
@@ -209,7 +209,7 @@
             window.onload = function(){
                 document.getElementById("mainFrame").src = "<%= theme.bgm.src  %>".replace(/&amp;/g,"&");
             }
-        </script>
+        </ script>
     <% } %>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>由于从配置文件中读取的url的&amp;号不知为何会被转义，所以这里我们用replace函数给转回来。</p>
