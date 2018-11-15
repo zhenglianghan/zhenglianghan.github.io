@@ -207,16 +207,35 @@
         <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="" id="mainFrame"></iframe>
         <script>
             window.onload = function(){
-                document.getElementById("mainFrame").src = "<%= theme.bgm.src %>"
+                document.getElementById("mainFrame").src = "<%= theme.bgm.src  %>".replace(/&amp;/g,"&");
             }
         </script>
     <% } %>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>由于从配置文件中读取的url的&amp;号不知为何会被转义，所以这里我们用replace函数给转回来。</p>
 <p>然后在主题的配置文件_config.yml中添加：</p>
-<pre><code>bgm:
-    enable: true
-    src: //music.163.com/outchain/player?type=0&amp;id=2435460185&amp;auto=1&amp;height=32
-</code></pre><p>（4）效果查看，戴上耳机你应该就能查看到了，如果用的谷歌浏览器，页面拉到最下面点击播放。</p>
+<pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">bgm</span><span class="token punctuation">:</span>
+    <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">src</span><span class="token punctuation">:</span> //music.163.com/outchain/player<span class="token punctuation">?</span>type=0<span class="token important">&amp;id</span>=2435460185<span class="token important">&amp;auto</span>=1<span class="token important">&amp;height</span>=32
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>（4）效果查看，戴上耳机你应该就能查”看”到了，如果用的谷歌浏览器，页面拉到最下面点击播放。</p>
+<h3 id="2-复制时的copyright"><a href="#2-复制时的copyright" class="headerlink" title="2 复制时的copyright"></a>2 复制时的copyright</h3><p>先说效果吧，复制此博客任意一段话粘贴到别处，就可以看到效果了。</p>
+<p>同样在主题目录的layout目录下，页面脚部的ejs文件中添加如下js代码：</p>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript">
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        document<span class="token punctuation">.</span>oncopy <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            e <span class="token operator">=</span> e <span class="token operator">||</span> window<span class="token punctuation">.</span>event<span class="token punctuation">;</span>
+            <span class="token keyword">var</span> oldText <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getSelection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">var</span> copyURL <span class="token operator">=</span> document<span class="token punctuation">.</span>URL<span class="token punctuation">;</span>
+            <span class="token keyword">var</span> author <span class="token operator">=</span> <span class="token string">"&lt;%= theme.content_author || config.author || config.title %>"</span><span class="token punctuation">;</span>
+            <span class="token keyword">var</span> newText <span class="token operator">=</span> oldText <span class="token operator">+</span> <span class="token string">"\n"</span> <span class="token operator">+</span> <span class="token string">"Copy from:"</span> <span class="token operator">+</span> copyURL <span class="token operator">+</span> <span class="token string">"\n"</span> <span class="token operator">+</span> <span class="token string">"Original author:"</span> <span class="token operator">+</span> author<span class="token punctuation">;</span>
+            e<span class="token punctuation">.</span>clipboardData<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token string">'text/plain'</span><span class="token punctuation">,</span> newText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            e<span class="token punctuation">.</span><span class="token function">preventDefault</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>当然，你也可以只在博文的页面去启用这个功能</p>
 
 					
 				</div>
@@ -356,7 +375,7 @@
 				
 				
 				<!--toc(post.content)-->
-				<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-BGM"><span class="post-toc-text">1 BGM</span></a></li></ol>
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-BGM"><span class="post-toc-text">1 BGM</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-复制时的copyright"><span class="post-toc-text">2 复制时的copyright</span></a></li></ol>
 			</nav>
 			<div class="post-toc-bar"><div>
 		</aside>
