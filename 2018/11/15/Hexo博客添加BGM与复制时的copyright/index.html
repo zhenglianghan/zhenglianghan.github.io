@@ -11,7 +11,7 @@
 		
 
 <head>
-	<title>category: 前端</title>
+	<title>Hexo博客添加BGM与复制时的copyright</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI" />
@@ -145,154 +145,221 @@
 		<!-- content srart -->
 <div class="am-g am-g-fixed blog-fixed blog-content">
 	<div class="am-u-md-8 am-u-sm-12">
-		<div class="archive">
 
-			<div class="blog-text-center">
-				
-					<i class="fa fa-book">前端</i>
-				
-			</div>  
+		<article class="am-article blog-article-p">
 
-			
+			<div class="am-article-hd">
+				
 
-							
-				
-				
-				
+
+				<h1 class="am-article-title blog-text-center">
 					
+					
+	
+		<a href="/2018/11/15/Hexo博客添加BGM与复制时的copyright/" itemprop="url">		
+			Hexo博客添加BGM与复制时的copyright		
+		</a>
+	
+
+				</h1>
+
+				<p class="am-article-meta blog-text-center">
+					<span>
+						<i class="fa fa-clock-o"></i> 
+						<a href="/2018/11/15/Hexo博客添加BGM与复制时的copyright/" itemprop="url">
+	<time datetime="2018-11-15T04:47:57.000Z" itemprop="datePublished">
+  		2018-11-15
+  </time>
+</a>    
+&nbsp;
+					</span>
+					
+					<span>						
+						
+							<i class="fa fa-tags"></i>
+							
+								<a href="#JavaScript" title="JavaScript" rel="4">JavaScript</a>&nbsp;
+													 											
+						
+					</span>
+				</p>
+			</div>
+
+			<div class="am-article-bd">
+				<div class="content" id="post-content">
+					
+						<h3 id="1-BGM"><a href="#1-BGM" class="headerlink" title="1 BGM"></a>1 BGM</h3><p>（1）在网页版（music.163.com）进入单曲、歌单、专辑、电台节目页面后，点击 <em>“生成外链播放器”</em> 链接。</p>
+<p><img src="/2018/11/15/Hexo博客添加BGM与复制时的copyright/1.png" alt=""></p>
+<p><strong>注意</strong>：歌单中存在无版权的音乐时无法生成外链播放器。</p>
+<p>（2）歌单和专辑外链播放器可以选择大中小三种尺寸，单曲和电台节目可以选择中小两种尺寸。你可以选择最适合你网站设计的尺寸。还可以选择是否要自动播放，打上勾后，别人访问网站时播放器会自动开始播放（谷歌浏览器似乎无效，必须手动点击播放）。</p>
+<p><img src="/2018/11/15/Hexo博客添加BGM与复制时的copyright/2.png" alt="1542259547730"></p>
+<p>（3）复制下面的HTML代码，在博客所用的主题目录的layout目录下，选择页面脚部的ejs文件（当然你想放在别的地方也行），添加如下代码</p>
+<pre class="line-numbers language-ejs"><code class="language-ejs"><iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="" id="mainFrame"></iframe>
+<script>
+    window.onload = function(){
+        document.getElementById("mainFrame").src = "//music.163.com/outchain/player?type=0&id=2435460185&auto=1&height=32";
+    }
+</script>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这里没有直接将iframe嵌入页面是为了防止加载iframe导致页面载入速度变慢与白屏时BGM就响起来了，所以JS设置了在页面加载完成后开始加载iframe。</p>
+<p>如果你在做主题开发或者需要将主题分享给别人，你也可以细致一点，这样写：</p>
+<pre class="line-numbers language-ejs"><code class="language-ejs"><% if(theme.bgm.enable) { %>
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="" id="mainFrame"></iframe>
+        <script>
+            window.onload = function(){
+                document.getElementById("mainFrame").src = <% =theme.bgm.src %>
+            }
+        </script>
+    <% } %>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后在主题的配置文件_config.yml中添加：</p>
 
 					
-					<!--<a href="/archives/2018" class="archive-year">2018</a>-->
-				
-								
-				
-					  
-					<div class="archive-year">
-						<a href="/archives/2018/11">
-							2018-11
-						</a>
-					</div>				
-				  
-				
-				<div class="archive-item">
-					<div class="archive-post-title">									
-						<a href="/2018/11/15/Hexo博客添加BGM与复制时的copyright/" itemprop="url">Hexo博客添加BGM与复制时的copyright</a>
-					</div>
-					<div class="archive-post-time">
-						<a href="/2018/11/15/Hexo博客添加BGM与复制时的copyright/" itemprop="url">11-15</a>
-					</div>
-				</div>		        							
-							
-				
-				
-				
-								
-				
-					  
-					<div class="archive-year">
-						<a href="/archives/2018/10">
-							2018-10
-						</a>
-					</div>				
-				  
-				
-				<div class="archive-item">
-					<div class="archive-post-title">									
-						<a href="/2018/10/08/onunload事件与onbeforeunload事件详解/" itemprop="url">onunload事件与onbeforeunload事件详解</a>
-					</div>
-					<div class="archive-post-time">
-						<a href="/2018/10/08/onunload事件与onbeforeunload事件详解/" itemprop="url">10-08</a>
-					</div>
-				</div>		        							
-							
-				
-				
-				
-								
-				  
-				
-				<div class="archive-item">
-					<div class="archive-post-title">									
-						<a href="/2018/10/06/DOM中获取元素的实际大小/" itemprop="url">DOM中获取元素的实际大小</a>
-					</div>
-					<div class="archive-post-time">
-						<a href="/2018/10/06/DOM中获取元素的实际大小/" itemprop="url">10-06</a>
-					</div>
-				</div>		        							
-							
-				
-				
-				
-								
-				
-					  
-					<div class="archive-year">
-						<a href="/archives/2018/09">
-							2018-09
-						</a>
-					</div>				
-				  
-				
-				<div class="archive-item">
-					<div class="archive-post-title">									
-						<a href="/2018/09/18/JS中Number-parseInt-parseFloat函数规则/" itemprop="url">JS中Number,parseInt,parseFloat函数规则</a>
-					</div>
-					<div class="archive-post-time">
-						<a href="/2018/09/18/JS中Number-parseInt-parseFloat函数规则/" itemprop="url">09-18</a>
-					</div>
-				</div>		        							
-							
-				
-				
-				
-								
-				  
-				
-				<div class="archive-item">
-					<div class="archive-post-title">									
-						<a href="/2018/09/17/CSS3动画实现一个盒子在2S内反复上下移动/" itemprop="url">CSS3动画实现一个盒子在2S内反复上下移动</a>
-					</div>
-					<div class="archive-post-time">
-						<a href="/2018/09/17/CSS3动画实现一个盒子在2S内反复上下移动/" itemprop="url">09-17</a>
-					</div>
-				</div>		        							
-							
-				
-				
-				
-								
-				  
-				
-				<div class="archive-item">
-					<div class="archive-post-title">									
-						<a href="/2018/09/12/JS中其他类型转换为布尔类型时的表现/" itemprop="url">JS中其他类型转换为布尔类型时的表现</a>
-					</div>
-					<div class="archive-post-time">
-						<a href="/2018/09/12/JS中其他类型转换为布尔类型时的表现/" itemprop="url">09-12</a>
-					</div>
-				</div>		        							
-							
-				
-				
-				
-								
-				  
-				
-				<div class="archive-item">
-					<div class="archive-post-title">									
-						<a href="/2018/09/11/常见的块级元素，行内元素及行内块元素及其特性/" itemprop="url">常见的块级元素，行内元素及行内块元素及其特性</a>
-					</div>
-					<div class="archive-post-time">
-						<a href="/2018/09/11/常见的块级元素，行内元素及行内块元素及其特性/" itemprop="url">09-11</a>
-					</div>
-				</div>		        							
-			
-				
-			    
-		</div>
-	</div>
+				</div>
+			</div>
+		</article>
+
+		<ul class="am-pagination">
+    
+	
+		<li class="am-pagination-next">
+		<a class="pull-right" href="/2018/10/30/阿里云服务centos系统下部署tomcat项目教程/" title="阿里云服务centos系统下部署tomcat项目教程">
+			下一篇 &raquo;
+		</a>
+		</li>
+	 
+ </ul>
+        
+
+		<div class="theme-annie-comment-button-container">
+	<button id="annie-comment-button" class="theme-annie-comment-button" onclick="Annie_Comment()">
+		加载评论
+		<!--加载评论-->
+	</button>
 </div>
 
+<div id="annie-comment-container" class="theme-annie-comment-main-container">
+
+	
+		
+			<!-- comment gitalk -->
+			<!-- show gitalk comment -->
+
+  <div id="gitalk-container"></div>
+
+
+<!-- gitalk`s css & js -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<link rel="stylesheet" href="/css/comment.css">
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<script type="text/javascript">
+	//thanks O-R
+	//https://github.com/gitalk/gitalk/issues/102#issuecomment-382970552
+	//去除尾部匹配正则数组的字符串  
+	//remove redundant characters
+	String.prototype.trimEnd = function(regStr) {
+		var result = this;
+		if(regStr == undefined || regStr == null || regStr == "") {
+			return result;
+		}
+		var array = regStr.split(',');
+
+		if(array.length > 0) {
+
+			var c = array.shift();
+			var str = this;
+			var i = str.length;
+			var rg = new RegExp(c);
+			var matchArr = str.match(rg);
+
+			if(matchArr != undefined && matchArr != null && matchArr.length > 0) {
+				var matchStr = matchArr[0].replace(/\\/g, "\\\\").replace(/\*/g, "\\*")
+					.replace(/\+/g, "\\+").replace(/\|/g, "\\|")
+					.replace(/\{/g, "\\{").replace(/\}/g, "\\}")
+					.replace(/\(/g, "\\(").replace(/\)/g, "\\)")
+					.replace(/\^/g, "\\^").replace(/\$/g, "\\$")
+					.replace(/\[/g, "\\[").replace(/\]/g, "\\]")
+					.replace(/\?/g, "\\?").replace(/\,/g, "\\,")
+					.replace(/\./g, "\\.").replace(/\&/g, "\\&");
+				matchStr = matchStr + '$';
+				result = str.replace(new RegExp(matchStr), "");
+			}
+
+			if(array.length > 0) {
+				return result.trimEnd(array.join())
+			} else {
+				return result;
+			}
+		}
+	};
+
+	//create gitalk
+	var gitalk = new Gitalk({
+		clientID: 'c954d1ae74b07aa83bb4',
+		clientSecret: '2dd84731561867c63becd3825459c20173a9a0e9',
+		//id: window.location.pathname,
+		// id: (window.location.pathname).split("/").pop().substring(0, 49),
+		id: md5(location.href.trimEnd('#.*$,\\?.*$,index.html$')),
+		repo: 'zhenglianghan.github.io',
+		owner: 'zhenglianghan',
+		admin: 'zhenglianghan',
+		distractionFreeMode: 'true',
+	})
+	gitalk.render('gitalk-container');
+</script>
+		
+	
+
+</div>
+
+<script type="text/javascript">
+	/* Show Comment */
+	var Annie_Comment = function() {
+		function Show_Hidden(obj) {
+			obj.style.display = 'block';
+		}
+		
+		//var obutton = $('#annie-comment-button');
+		//var obutton = $('#annie-comment-container');
+		var obutton = document.getElementById("annie-comment-button" || "0");
+		var odiv = document.getElementById("annie-comment-container");
+		if( 'obutton' ) {
+			obutton.onclick = function() {
+				Show_Hidden(odiv);
+				$("#annie-comment-button").css("display", 'none');
+				return false;
+			}
+		}
+	};
+
+	(function Annie_Init() {
+		Annie_Comment();
+	})();
+</script>
+		
+		<!--
+	时间：2018-09-24
+	描述：The TOC module refers to 'https://github.com/codefine/hexo-theme-mellow', include toc.ejs、toc.js、toc.css. All rights reserved by codefine. 
+-->
+
+	
+		<aside class="post-widget">
+			<nav class="post-toc-wrap" id="post-toc">
+				
+					<strong>文章目录</strong>
+				
+				
+				<!--toc(post.content)-->
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-BGM"><span class="post-toc-text">1 BGM</span></a></li></ol>
+			</nav>
+			<div class="post-toc-bar"><div>
+		</aside>
+	
+
+	</div>
+</div>
 		</div>
 		</main>
 		
@@ -328,6 +395,11 @@
 	}
 </style>
 
+
+	<script src="/js/motto.js"></script>
+	<script type="text/javascript">
+		$(".motto").html(getMingYanContent());
+	</script>	
 
 
 
@@ -669,6 +741,8 @@
 
 
 
+
+	<script type="text/javascript" src="/js/toc.js"></script>
 
 
 <script type="text/javascript" src="/js/main.js"></script>
