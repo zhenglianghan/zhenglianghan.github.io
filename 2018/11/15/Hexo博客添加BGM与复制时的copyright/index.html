@@ -224,7 +224,7 @@
         document<span class="token punctuation">.</span>oncopy <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">{</span>
             e <span class="token operator">=</span> e <span class="token operator">||</span> window<span class="token punctuation">.</span>event<span class="token punctuation">;</span>
             <span class="token keyword">var</span> oldText <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getSelection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">var</span> copyURL <span class="token operator">=</span> document<span class="token punctuation">.</span>URL<span class="token punctuation">;</span>
+            <span class="token keyword">var</span> copyURL <span class="token operator">=</span> <span class="token function">decodeURI</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>URL<span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token keyword">var</span> author <span class="token operator">=</span> <span class="token string">"&lt;%= theme.content_author || config.author || config.title %>"</span><span class="token punctuation">;</span>
             <span class="token keyword">var</span> newText <span class="token operator">=</span> oldText <span class="token operator">+</span> <span class="token string">"\n"</span> <span class="token operator">+</span> <span class="token string">"Copy from:"</span> <span class="token operator">+</span> copyURL <span class="token operator">+</span> <span class="token string">"\n"</span> <span class="token operator">+</span> <span class="token string">"Original author:"</span> <span class="token operator">+</span> author<span class="token punctuation">;</span>
             e<span class="token punctuation">.</span>clipboardData<span class="token punctuation">.</span><span class="token function">setData</span><span class="token punctuation">(</span><span class="token string">'text/plain'</span><span class="token punctuation">,</span> newText<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -820,7 +820,7 @@
 		document.oncopy = function(e){
 			e = e || window.event;
 			var oldText = document.getSelection().toString();
-			var copyURL = document.URL;
+			var copyURL = decodeURI(document.URL);
 			var author = "蛤蛤蛤";
 			var newText = oldText + "\n" + "Copy from:" + copyURL + "\n" + "Original author:" + author;
 			e.clipboardData.setData('text/plain', newText);

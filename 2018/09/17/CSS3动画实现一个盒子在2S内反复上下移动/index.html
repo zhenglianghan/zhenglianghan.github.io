@@ -829,7 +829,7 @@ animation-timing-function:linear /*规定动画的速度曲线。默认为ease,l
 		document.oncopy = function(e){
 			e = e || window.event;
 			var oldText = document.getSelection().toString();
-			var copyURL = document.URL;
+			var copyURL = decodeURI(document.URL);
 			var author = "蛤蛤蛤";
 			var newText = oldText + "\n" + "Copy from:" + copyURL + "\n" + "Original author:" + author;
 			e.clipboardData.setData('text/plain', newText);
