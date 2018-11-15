@@ -207,12 +207,16 @@
         <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="" id="mainFrame"></iframe>
         <script>
             window.onload = function(){
-                document.getElementById("mainFrame").src = <% =theme.bgm.src %>
+                document.getElementById("mainFrame").src = "<% =theme.bgm.src %>"
             }
         </script>
     <% } %>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>然后在主题的配置文件_config.yml中添加：</p>
+<pre><code>bgm:
+    enable: true
+    src: //music.163.com/outchain/player?type=0&amp;id=2435460185&amp;auto=1&amp;height=32
+</code></pre><p>（4）效果查看，戴上耳机你应该就能查看到了，如果用的谷歌浏览器，页面拉到最下面点击播放。</p>
 
 					
 				</div>
