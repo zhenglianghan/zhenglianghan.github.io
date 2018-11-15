@@ -194,25 +194,23 @@
 <p>（2）歌单和专辑外链播放器可以选择大中小三种尺寸，单曲和电台节目可以选择中小两种尺寸。你可以选择最适合你网站设计的尺寸。还可以选择是否要自动播放，打上勾后，别人访问网站时播放器会自动开始播放（谷歌浏览器似乎无效，必须手动点击播放）。</p>
 <p><img src="/2018/11/15/Hexo博客添加BGM与复制时的copyright/2.png" alt="1542259547730"></p>
 <p>（3）复制下面的HTML代码，在博客所用的主题目录的layout目录下，选择页面脚部的ejs文件（当然你想放在别的地方也行），添加如下代码</p>
-<pre class="line-numbers language-ejs"><code class="language-ejs"><i-frame frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="" id="mainFrame"></iframe>
-<script>
+<pre><code>&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=298 height=52 src=&quot;&quot; id=&quot;mainFrame&quot;&gt;&lt;/iframe&gt;
+&lt;script&gt;
     window.onload = function(){
-        document.getElementById("mainFrame").src = "//music.163.com/outchain/player?type=0&id=2435460185&auto=1&height=32";
+        document.getElementById(&quot;mainFrame&quot;).src = &quot;//music.163.com/outchain/player?type=0&amp;id=2435460185&amp;auto=1&amp;height=32&quot;;
     }
-</script>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>这里没有直接将iframe嵌入页面是为了防止加载iframe导致页面载入速度变慢与白屏时BGM就响起来了，所以JS设置了在页面加载完成后开始加载iframe。</p>
+&lt;/script&gt;
+</code></pre><p>这里没有直接将iframe嵌入页面是为了防止加载iframe导致页面载入速度变慢与白屏时BGM就响起来了，所以JS设置了在页面加载完成后开始加载iframe。</p>
 <p>如果你在做主题开发或者需要将主题分享给别人，你也可以细致一点，这样写：</p>
-<pre class="line-numbers language-ejs"><code class="language-ejs"><% if(theme.bgm.enable) { %>
-        <i-frame frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="" id="mainFrame"></iframe>
-        <script>
+<pre><code>&lt;% if(theme.bgm.enable) { %&gt;
+        &lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=298 height=52 src=&quot;&quot; id=&quot;mainFrame&quot;&gt;&lt;/iframe&gt;
+        &lt;script&gt;
             window.onload = function(){
-                document.getElementById("mainFrame").src = "<%= theme.bgm.src  %>".replace(/&amp;/g,"&");
+                document.getElementById(&quot;mainFrame&quot;).src = &quot;&lt;%= theme.bgm.src  %&gt;&quot;.replace(/&amp;amp;/g,&quot;&amp;&quot;);
             }
-        </script>
-    <% } %>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>由于从配置文件中读取的url的&amp;号不知为何会被转义，所以这里我们用replace函数给转回来。</p>
+        &lt;/script&gt;
+    &lt;% } %&gt;
+</code></pre><p>由于从配置文件中读取的url的&amp;号不知为何会被转义，所以这里我们用replace函数给转回来。</p>
 <p>然后在主题的配置文件_config.yml中添加：</p>
 <pre class="line-numbers language-yaml"><code class="language-yaml"><span class="token key atrule">bgm</span><span class="token punctuation">:</span>
     <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
