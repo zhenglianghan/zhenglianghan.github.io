@@ -194,7 +194,7 @@
 <p>（2）歌单和专辑外链播放器可以选择大中小三种尺寸，单曲和电台节目可以选择中小两种尺寸。你可以选择最适合你网站设计的尺寸。还可以选择是否要自动播放，打上勾后，别人访问网站时播放器会自动开始播放（谷歌浏览器似乎无效，必须手动点击播放）。</p>
 <p><img src="/2018/11/15/Hexo博客添加BGM与复制时的copyright/2.png" alt="1542259547730"></p>
 <p>（3）复制下面的HTML代码，在博客所用的主题目录的layout目录下，选择页面脚部的ejs文件（当然你想放在别的地方也行），添加如下代码</p>
-<pre class="line-numbers language-ejs"><code class="language-ejs"><!--iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="" id="mainFrame"></iframe>
+<pre class="line-numbers language-ejs"><code class="language-ejs"><i-frame frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="" id="mainFrame"></iframe>
 <script>
     window.onload = function(){
         document.getElementById("mainFrame").src = "//music.163.com/outchain/player?type=0&id=2435460185&auto=1&height=32";
@@ -204,7 +204,7 @@
 <p>这里没有直接将iframe嵌入页面是为了防止加载iframe导致页面载入速度变慢与白屏时BGM就响起来了，所以JS设置了在页面加载完成后开始加载iframe。</p>
 <p>如果你在做主题开发或者需要将主题分享给别人，你也可以细致一点，这样写：</p>
 <pre class="line-numbers language-ejs"><code class="language-ejs"><% if(theme.bgm.enable) { %>
-        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="" id="mainFrame"></iframe>
+        <i-frame frameborder="no" border="0" marginwidth="0" marginheight="0" width=298 height=52 src="" id="mainFrame"></iframe>
         <script>
             window.onload = function(){
                 document.getElementById("mainFrame").src = "<%= theme.bgm.src  %>".replace(/&amp;/g,"&");
@@ -375,7 +375,7 @@
 				
 				
 				<!--toc(post.content)-->
-				<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-BGM"><span class="post-toc-text">1 BGM</span></a></li></ol>
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-BGM"><span class="post-toc-text">1 BGM</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-复制时的copyright"><span class="post-toc-text">2 复制时的copyright</span></a></li></ol>
 			</nav>
 			<div class="post-toc-bar"><div>
 		</aside>
