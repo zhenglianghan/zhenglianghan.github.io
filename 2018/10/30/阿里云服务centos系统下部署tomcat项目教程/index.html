@@ -55,7 +55,7 @@
 	
 	<!-- others: such as change-bg, time... -->
 	<p class="page-name-other">
-		11/15/2018 
+		11/17/2018 
 		<style type="text/css">
 	header:after {
 		content: '';
@@ -207,16 +207,19 @@
 sudo yum install java-1.8.0-openjdk-devel
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="5安装启动tomcat"><a href="#5安装启动tomcat" class="headerlink" title="5安装启动tomcat"></a>5安装启动tomcat</h3><p>下载tomcat</p>
-<pre class="line-numbers language-shell"><code class="language-shell">wget http://mirror.bit.edu.cn/apache/tomcat/tomcat-8/v8.5.28/bin/apache-tomcat-8.5.28.tar.gz
+<pre class="line-numbers language-shell"><code class="language-shell">wget https://archive.apache.org/dist/tomcat/tomcat-8/v8.5.33/bin/apache-tomcat-8.5.33.tar.gz
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>若报-bash:wget: command not found，则表明没有安装wget，需要安装，安装命令如下：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">yum -y install wget
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>要安装其它版本看这个教程：</p>
 <p><a href="https://blog.csdn.net/qq_29291085/article/details/77389361" target="_blank" rel="noopener">https://blog.csdn.net/qq_29291085/article/details/77389361</a></p>
 <p>下载完成后解压：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">tar -zxvf apache-tomcat-8.5.28.tar.gz
+<pre class="line-numbers language-shell"><code class="language-shell">tar -zxvf apache-tomcat-8.5.33.tar.gz
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>注意这里的文件名，不同版本号下下来的文件名可不同</p>
 <p>切换到tomcat的bin目录下：</p>
-<pre><code>cd /root/apache-tomcat-8.5.28/bin
+<pre><code>cd /root/apache-tomcat-8.5.33/bin
 </code></pre><p>之后输入ls，可以看到有一个startup.sh文件，运行它来启动tomcat:</p>
 <pre class="line-numbers language-shell"><code class="language-shell">./startup.sh
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -249,7 +252,7 @@ source /root/test.sql;
 <p>结束后查一下表什么的看有没有出什么错。如果有中文乱码问题，百度一哈，或者去安装mysql而不用mariadb，一般来说是没啥问题的。</p>
 <p>将war包，假设文件名为test.war，放到tomcat下的webapp目录下。</p>
 <p>之后切换到tomcat目录的bin目录下</p>
-<pre class="line-numbers language-shell"><code class="language-shell">cd /root/apache-tomcat-8.5.28/bin
+<pre class="line-numbers language-shell"><code class="language-shell">cd /root/apache-tomcat-8.5.33/bin
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>重启tomcat：</p>
 <pre class="line-numbers language-shell"><code class="language-shell">./shutdown.sh
